@@ -16,12 +16,14 @@ def test_sanityd():
     config_text = SanityConfig.slurp_config_file(config.sanity_conf)
     network = 'mainnet'
     is_testnet = False
-    genesis_hash = u'00000dcd291dd3be94c2ba42e0ffdf060b6edec2e7268b533419afc732f793e2'
+
+    # MODMOD
+    genesis_hash = u'00000a609bb4527e1e35162d7a08b3a47df9ae1a479fcd0adf87675936896b60'
     for line in config_text.split("\n"):
         if line.startswith('testnet=1'):
             network = 'testnet'
             is_testnet = True
-            genesis_hash = u'0000069571db7fb6ef1177650bcaff0494380301f09a671eab1d76d3070139c3'
+            genesis_hash = u'0000096b17ca35b6884cd9269dbacc60b9ab5aa15995b5b8678e6b8a58ba85ca'
 
     creds = SanityConfig.get_rpc_creds(config_text, network)
     sanityd = SanityDaemon(**creds)
